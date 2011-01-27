@@ -21,3 +21,18 @@ Contributing
 Currently _Unhosted.js_ is under heavy development and now where near a stable
 state. Feel free to send in pull requests or patches if you want/can help
 out. We always need more developers :)
+
+Setting up the examples
+=======================
+
+In order to try the two example applications "Blog" and "Address book", follow these
+guidelines:
+
+* You need to make the unhosted.js folder available via http:// or https:// - opening
+  them locally (file:///) in your browser won't work, but a local webserver does
+  the job
+* In unhosted.js/scripts/modules/UJJP-MessageQueue.js and
+  unhosted.js/scripts/modules/UJJP-KeyValue.js, you need to provide the URI to a
+  working UJJP version 0.2 server
+* Now you can point your browser at whatever location you serve /unhosted.js/examples
+
