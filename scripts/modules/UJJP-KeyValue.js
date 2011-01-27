@@ -22,7 +22,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
     /**
      * Default post URI
      */
-    UJJPKeyValue.postURI = '/unhosted/cloudside/unhosted.php';
+    UJJPKeyValue.postURI = 'http://www.example.com/UJ/KV/0.2/';
 
     UJJPKeyValue.set = function set(key, value, callback){
         var password = this.user.getAuth(protocol);
@@ -39,7 +39,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
 
         var privKey = keyStorage.retrievePrivKey(this.user.keyID);
 
-        util.UJJP.sendPost(this.address, this.postURI, {
+        util.UJJP.sendPost(this.postURI, {
             protocol: protocol
             , password: password
             , command: cmd
@@ -60,7 +60,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
             , keyHash: key
         });
 
-        util.UJJP.sendPost(this.address, this.postURI, {
+        util.UJJP.sendPost(this.postURI, {
             protocol: protocol
             , command: cmd
         }, function postDone(err, status, data){

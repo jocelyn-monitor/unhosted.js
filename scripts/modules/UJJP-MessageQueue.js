@@ -21,7 +21,7 @@ function(MessageQueueInterface, modules, util, keyStorage, crypto) {
     /**
      * Default post URI
      */
-    UJJPMessageQueue.postURI = '/unhosted/cloudside/unhosted.php',
+    UJJPMessageQueue.postURI = 'http://www.example.com/UJ/KV/0.2/',
 
     UJJPMessageQueue.send = function send(recipinet, key, message, callback){
         var recipientPubKey = keyStorage.retrievePubKey(recipient.keyID);
@@ -55,7 +55,7 @@ function(MessageQueueInterface, modules, util, keyStorage, crypto) {
             , value: value
         });
 
-        util.UJJP.sendPost(this.address, this.postURI, {
+        util.UJJP.sendPost(this.postURI, {
             protocol: MessageQueue.proto
             , command: cmd
             , pubSign: crypto.rsa.signSHA1(cmd, privKey)
@@ -82,7 +82,7 @@ function(MessageQueueInterface, modules, util, keyStorage, crypto) {
             , keyHash: key
         });
 
-        util.UJJP.sendPost(this.address, this.postURI, {
+        util.UJJP.sendPost(this.postURI, {
             protocol: MessageQueue.proto
             , password: this.user.password
             , command: cmd

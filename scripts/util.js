@@ -105,17 +105,13 @@ define(function(){
         /**
          * POST data to a UJJP server.
          *
-         * @param {String} address The hostname/ip of the server.
          * @param {String} uri The POST URI
          * @param {Object} obj The JSON object to be POST'ed
          * @param {Function} callback This function will be called once the POST
          * request completes with the parameters (err, status, data).
          */
-        sendPost: function sendPost(address, uri, obj, callback) {
-            var url = document.location.protocol
-                + '//' + address + uri;
-
-            POST(url, 'application/json', JSON.stringify(obj), callback);
+        sendPost: function sendPost(uri, obj, callback) {
+            POST(uri, 'application/json', JSON.stringify(obj), callback);
         },
 
         handlePostError: function handlePostError(status
