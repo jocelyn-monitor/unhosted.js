@@ -1,4 +1,4 @@
-require({ baseUrl: "/scripts/", waitSeconds: 2 }
+require({ baseUrl: "../scripts/", waitSeconds: 2 }
         , ['crypto', 'key-storage'],
 function(crypto, keyStorage){
     window.UnhostedExamples = {};
