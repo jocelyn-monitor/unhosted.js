@@ -2,39 +2,40 @@ Unhosted.js
 ===========
 
 [Unhosted.js](https://github.com/DanielG/unhosted.js) is a browser side library
-implementing the [Unhosted](https://github.com/michiel-unhosted/unhosted) module
-discovery specification. It can be used by web-application developers to make
-their applications _unhosted_.
+implementing the [Unhosted](https://github.com/michiel-unhosted/unhosted)
+module discovery specification. It can be used by web-application developers to
+make their applications _unhosted_.
 
-_Unhosted_ is a distributed project aiming to free users from the monopolies that
-current 'Web 2.0' services lock their users into. The _Unhosted module discovery
-specification_ specifies how to discover per-user servers that handle this
-users' data and processing.
+_Unhosted_ is a distributed project aiming to free users from the monopolies
+that current 'Web 2.0' services lock their users into. The _Unhosted module
+discovery specification_ specifies how to discover per-user servers that handle
+this users' data and processing.
 
-Unhosted.js is going to support as many _Unhosted modules_ as possible. Examples
-for modules that will be implemented in the future include WebDAV, couchDB, realtime
-(PUSH) updates via WebSockets and long polling etc. and many more.
+Unhosted.js is going to support as many _Unhosted modules_ as possible.
+Examples for modules that will be implemented in the future include WebDAV,
+CouchDB, realtime (PUSH) updates via WebSockets, long polling and many more.
 
 Contributing
 ============
 
 Currently _Unhosted.js_ is under heavy development and now where near a stable
-state. Feel free to send in pull requests or patches if you want/can help
-out. We always need more developers :)
+state. Feel free to send in pull requests or patches if you want/can help out.
+We always need more developers :)
 
 Setting up the examples
 =======================
 
-In order to try the two example applications "Blog" and "Address book", follow these
-guidelines:
+In order to try the two example applications "Blog" and "Address book", follow
+these guidelines:
 
-* You need to make the unhosted.js folder available via http:// or https:// - opening
-  them locally (file:///) in your browser won't work, but a local webserver does
-  the job
+* You need to make the unhosted.js folder available via http:// or https://.
+  Opening them locally (file:///) in your browser won't work, but a local
+  webserver does the job.
 * In unhosted.js/scripts/modules/UJJP-MessageQueue.js and
-  unhosted.js/scripts/modules/UJJP-KeyValue.js, you need to provide the URI to a
-  working UJJP version 0.2 server
-  Have a look at https://github.com/michiel-unhosted/unhosted/wiki/demo-ujjp-servers
-  for a list of UJJP servers that are freely accessible
-* Now you can point your browser at whatever location you serve unhosted.js/examples
-
+  unhosted.js/scripts/modules/UJJP-KeyValue.js, you need to provide the URI to
+  a working UJJP version 0.2 server.
+  Have a look at
+  https://github.com/michiel-unhosted/unhosted/wiki/demo-ujjp-servers
+  for a list of UJJP servers that are freely accessible.
+* Now you can point your browser at whatever location you serve
+  unhosted.js/examples
