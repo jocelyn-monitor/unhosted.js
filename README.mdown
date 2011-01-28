@@ -34,5 +34,7 @@ guidelines:
 * In unhosted.js/scripts/modules/UJJP-MessageQueue.js and
   unhosted.js/scripts/modules/UJJP-KeyValue.js, you need to provide the URI to a
   working UJJP version 0.2 server
+  Have a look at https://github.com/michiel-unhosted/unhosted/wiki/demo-ujjp-servers
+  for a list of UJJP servers that are freely accessible
 * Now you can point your browser at whatever location you serve unhosted.js/examples
 
