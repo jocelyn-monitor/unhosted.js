@@ -31,7 +31,7 @@ define(function(){
     var LOADING = 3;
     var DONE = 4;
 
-    function HTTP(method, url, headers, body, callback){
+    function HTTP(method, uri, headers, body, callback){
         var xmlHTTP = createXMLHTTPObject();
 
         xmlHTTP.onreadystatechange = function(){
@@ -52,7 +52,7 @@ define(function(){
         }
 
         try {
-            xmlHTTP.open("POST", url, true);
+            xmlHTTP.open("POST", uri, true);
         } catch (e) {
             callback(err);
         }
@@ -61,17 +61,17 @@ define(function(){
     /**
      * Send a HTTP(s) POST request to a server.
      *
-     * @param {String} url Uniform Resource Locator including host, path, query
+     * @param {String} uri Uniform Resource Identifier including host, path, query
      * and segment.
-     * @param {String} query A query string to be appended to the URL with a '&'
+     * @param {String} query A query string to be appended to the URI with a '&'
      * symbol.
      */
-    function POST(url, contentType, body, callback){
-        HTTP('POST', url, { 'Content-type': contentType }, body, callback);
+    function POST(uri, contentType, body, callback){
+        HTTP('POST', uri, { 'Content-type': contentType }, body, callback);
     }
 
-    function GET(url, callback){
-        HTTP('GET', url, null, null, callback);
+    function GET(uri, callback){
+        HTTP('GET', uri, null, null, callback);
     }
 
     function handlePostError(status, data, err_callback, ok_callback){
