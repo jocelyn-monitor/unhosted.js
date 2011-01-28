@@ -1,4 +1,3 @@
-
 /*
  * The Unhosted.js library
  * Copyright (C) 2011  Daniel Gröber <darklord ät darkboxed.org>
