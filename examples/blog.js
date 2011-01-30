@@ -6,13 +6,19 @@ require(['unhosted'
          , 'unhosted!KeyValue'],
 function(Unhosted, createUser, crypto, keyStorage, util, KeyValue){
     $('#example')
+        // Overwrite the html in the 'example' div
         .html('<div id="blogposts"></div>'
               + '<textarea id="blogpost" rows="5" cols="40">Hello World!</textarea>'
               + '<br /><input type="submit" value="Make me unhosted!" id="post" />');
 
+    // These will be initialized later
     var server = null;
     var user = null;
 
+
+    // To keep this example simple the sessionKey for the blog is stored in
+    // local storage (for now). This means the blog won't work outside of the
+    // browser the posts were created in.
     if(!localStorage.getItem('/unhosted/blogsessionKey')) {
         localStorage.setItem('/unhosted/blogsessionKey'
                              , crypto.random.bytes(16).join(''));
