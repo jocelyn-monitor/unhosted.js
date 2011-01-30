@@ -80,8 +80,7 @@ define(['./Module', '../util'], function(Module){
      * GET a key-value pair
      *
      * @param {String} key The key to get
-     * @param {String} sessionKey The key to use to find and decrypt the
-     * key-value pair
+     * @param {String} sessionKey The key to find and decrypt the key-value pair
      * @param {Function} callback A function that will be called with the
      * arguments (err, value [, cmdStr]) once the request completes.
      */
