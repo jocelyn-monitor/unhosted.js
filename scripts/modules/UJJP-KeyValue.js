@@ -32,14 +32,11 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
     // TOOD: sha1(key)
 
     UJJPKeyValue.set = function set(key, value, callback){
-        var password = this.user.getAuth(protocol);
-        if( typeof password !== 'string') {
-            throw new Error('User has No password set for ' + protocol);
-        }
+        var user = util.UJJP.getUserProperties.call(this);
 
         var cmd = JSON.stringify({
             method: 'SET'
-            , user: this.user.id
+            , user: user.id
             , keyHash: key
             , value: value
         });
@@ -48,7 +45,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
 
         util.UJJP.sendPost(this.postURI, {
             protocol: protocol
-            , password: password
+            , password: user.password
             , command: cmd
             , pubSign: crypto.rsa.signSHA1(cmd, privKey)
         }, function postDone(err, status, data){
@@ -60,10 +57,11 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
 
     UJJPKeyValue.get = function get(key, callback) {
         var self = this;
+        var user = util.UJJP.getUserProperties.call(this);
 
         var cmd = JSON.stringify({
             method: 'GET'
-            , user: this.user.id
+            , user: user.id
             , keyHash: key
         });
 

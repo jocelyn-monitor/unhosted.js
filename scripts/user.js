@@ -40,7 +40,7 @@ define(['./crypto', './util'], function(crypto){
     User.keyID = null;
 
     /**
-     * The server the user has registered.
+     * The servers the user has registered.
      * Something like the following, highly depends on the module.
      *
      *     { 'KeyValue':
@@ -50,7 +50,7 @@ define(['./crypto', './util'], function(crypto){
      *       }
      *     }
      */
-    User.servers = {};
+    User.servers = null;
 
     /**
      * Fetch a user's UID
@@ -63,18 +63,26 @@ define(['./crypto', './util'], function(crypto){
         callback(null, this.id);
     }
 
-    User.getAuth = function(protocol){
+    /**
+     * Try to get a module property from the 'User.servers' object.
+     *
+     * Protocols are delimited using ';' so if the 'UJJP-KeyValue' module
+     * searches for a property it will be found if it is defined in one of the
+     * following protocol sections: 'UJJP', 'KeyValue' or 'UJJP;KeyValue'.
+     */
+    User.getModuleProperty = function(protocol, property){
         var self = this;
         var p = protocol.split(';');
-        var password = this.servers[protocol] &&
-            this.servers[protocol].password;
-        if(password) return;
+        var value = this.servers[protocol] &&
+            this.servers[protocol][property];
+
+        if(value) return;
 
         p.forEach(function(s){
-            password = password || self.servers[s] && self.servers[s].password
+            value = value || self.servers[s] && self.servers[s][property];
         });
 
-        return password;
+        return value;
     }
 
     function createUser(alias) {

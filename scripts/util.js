@@ -139,6 +139,47 @@ define(function(){
                     err_callback(e);
                 }
             }
+        },
+
+        /**
+         * Extract some needed user information
+         *
+         * @note This function is called as
+         * util.UJJP.getUserProperties.call(this) inside the UJJP module to
+         * setup 'this' correctly
+         */
+        getUserProperties: function getUserProperties(){
+            var protocol = this.protocol;
+
+            if( typeof this.user !== 'object') {
+                throw new Error("No 'user' object set for " + protocol);
+            }
+
+            if( typeof this.user.id !== 'string') {
+                throw new Error("No user id set for " + protocol + '. Did you'
+                                + 'initialize the user object?');
+            }
+
+            var server = this.user.getModuleProperty(protocol, 'server');
+            var secure = this.user.getModuleProperty(protocol, 'secure')
+                || false;
+            var path = this.user.getModuleProperty(protocol, 'path')
+                || this.defaultPostPath;
+            var password = this.user.getModuleProperty(protocol, 'password');
+
+            if( typeof server !== 'string') {
+                throw new Error('No server set for ' + protocol);
+            }
+
+            if( typeof password !== 'string') {
+                throw new Error('No password set for ' + protocol);
+            }
+
+            return {
+                uri: 'http' + (secure ?' s') +'://'+ server +'/'+ path
+                , id: this.user.id
+                , password: password
+            };
         }
     };
 
