@@ -1,10 +1,9 @@
-require(['unhosted'
+require(['unhosted!KeyValue'
          , 'user'
          , 'crypto'
          , 'key-storage'
-         , 'util'
-         , 'unhosted!KeyValue'],
-function(Unhosted, createUser, crypto, keyStorage, util, KeyValue){
+         , 'util'],
+function(KeyValue, createUser, crypto, keyStorage, util){
     $('#example')
         // Overwrite the html in the 'example' div
         .html('<div id="blogposts"></div>'
@@ -21,21 +20,26 @@ function(Unhosted, createUser, crypto, keyStorage, util, KeyValue){
     // browser the posts were created in.
     if(!localStorage.getItem('/unhosted/blogsessionKey')) {
         localStorage.setItem('/unhosted/blogsessionKey'
-                             , crypto.random.bytes(16).join(''));
+                             , crypto.sessionKey());
     }
 
     (function init(){
         user = createUser('me@example.com');
+
+        // TODO: get this information from login using a discovery module
+        user.servers = {
+            'UJJP': { // define some server information for all UJJP modules
+                server: document.location.host // just for testing
+                , user: user.id // the user id is just sha1('me@example.com')
+                , password: '1234'
+            }
+            , 'UJJP;KeyValue-0.2': {
+                path: '/UJ/KV/0.2/'
+            }
+        };
+
         user.keyID = UnhostedExamples.publisherKeyID;
         user.getID(function(){
-            user.servers = {
-                'KeyValue-0.2': {
-                    server: 'localhost:1337'
-                    , 'user': user.id
-                    , 'password': '1234'
-                }
-            };
-
             server = KeyValue.create(user);
             // TODO: get address from user login
             server.address = document.location.host;
@@ -128,7 +132,12 @@ function(Unhosted, createUser, crypto, keyStorage, util, KeyValue){
         } else {
             $('#blogposts').html('<p>ERROR: ' + err.message +'</p>');
             var stack = err.stack || err.stacktrace;
-            console.log(stack);
+
+            if(console && console.log && stack) {
+                // print a more helpful stacktrace
+                console.log(stack);
+            }
+
             throw err;
             return;
         }
