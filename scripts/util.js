@@ -174,7 +174,7 @@ define(function(){
             }
 
             return {
-                uri: 'http' + (secure ?' s') +'://'+ server +'/'+ path
+                uri: 'http' + (secure ? 's':'') +'://'+ server +'/'+ path
                 , id: this.user.id
                 , password: password
             };
