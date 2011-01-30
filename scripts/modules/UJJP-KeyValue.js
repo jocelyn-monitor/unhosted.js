@@ -27,7 +27,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
     /**
      * Default post path
      */
-    UJJPMessageQueue.defaultPostPath = '/UJ/KV/0.2/',
+    UJJPKeyValue.defaultPostPath = '/UJ/KV/0.2/',
 
     // TOOD: sha1(key)
 
