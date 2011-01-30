@@ -25,9 +25,11 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
     var protocol = UJJPKeyValue.protocol;
 
     /**
-     * Default post URI
+     * Default post path
      */
-    UJJPKeyValue.postURI = 'http://www.example.com/UJ/KV/0.2/';
+    UJJPMessageQueue.defaultPostPath = '/UJ/KV/0.2/',
+
+    // TOOD: sha1(key)
 
     UJJPKeyValue.set = function set(key, value, callback){
         var password = this.user.getAuth(protocol);
