@@ -21,9 +21,12 @@ define(['./modules', './modules/available'], function(modules){
         load: function(name, req, load, config){
             var moduleName = modules.get(name);
             req([moduleName], function(module){
-                load(function(){
-                    return module;
-                });
+                // Kill the call stack
+                setTimeout(function(){
+                    load(function(){
+                        return module;
+                    });
+                }, 0);
             });
         }
     }
