@@ -2,19 +2,51 @@
   <head>
     <title>Unhosted Examples</title>
     <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="../scripts/require.js"
+    <script type="text/javascript" src="../scripts/lib/require.js"
             data-main="examples.js">
     </script>
+    <style type="text/css" media="screen">
+      @import url('style.css');
+    </style>
   </head>
   <body>
-    <div id="list">
+    <div class="content">
       <h4>Examples</h4>
       <ul>
         <li><a href="#blog">Blog</a></li>
         <li><a href="#address">Address book</a></li>
       </ul>
     </div>
-    <hr />
-    <div id="example"></div>
+    <div class="sidebar">
+      <table class="login">
+        <tr>
+          <td>
+            <select id="aliasType">
+              <option>E-Mail address</option>
+              <option>Github-Gist</option>
+              <option>Jabber-ID</option>
+              <option>...</option>
+            </select>
+          </td>
+          <td>
+            <input type="text"
+                   id="alias"
+                   value="me@example.org"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td>
+            <input type="password"
+                   id="alias"
+                   value="1234" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="clear">
+      <hr />
+      <div id="example"></div>
+    </div>
   </body>
 </html>
