@@ -10,7 +10,12 @@ define(['../interfaces/KeyValue'
 function(KeyValueInterface, modules, util, keyStorage, crypto) {
     modules.register('KeyValue', 0, 'modules/UJJP-KeyValue');
 
-    /* Inherit interfaces/KeyValue */
+    /**
+     * Inherit interfaces/KeyValue
+     *
+     * see scripts/interfaces/KeyValue.js for documentation on the methods
+     */
+
     var UJJPKeyValue = Object.create(KeyValueInterface);
 
     /**
