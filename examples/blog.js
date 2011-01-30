@@ -28,12 +28,12 @@ function(KeyValue, createUser, crypto, keyStorage, util){
 
         // TODO: get this information from login using a discovery module
         user.servers = {
-            'UJJP': { // define some server information for all UJJP modules
+            'UJJP/0.2': { // define some server information for all UJJP modules
                 server: document.location.host // just for testing
                 , user: user.id // the user id is just sha1('me@example.com')
                 , password: '1234'
             }
-            , 'UJJP;KeyValue-0.2': {
+            , 'UJJP/0.2;KeyValue-0.2': {
                 path: '/UJ/KV/0.2/'
             }
         };
