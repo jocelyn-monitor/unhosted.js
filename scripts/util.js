@@ -114,9 +114,7 @@ define(function(){
             POST(uri, 'application/json', JSON.stringify(obj), callback);
         },
 
-        handlePostError: function handlePostError(status
-                                                  , data
-                                                  , err_callback
+        handlePostError: function handlePostError(status, data, err_callback
                                                   , ok_callback)
         {
             if(typeof ok_callback === 'undefined') {
