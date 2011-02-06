@@ -25,7 +25,7 @@
  * recommended to inherit this object.
  */
 
-define(['./Module', '../util'], function(Module){
+define(['./Module', '../crypto', '../util'], function(Module, crypto){
     /**
      * SET the value of a key-value pair.
      *
