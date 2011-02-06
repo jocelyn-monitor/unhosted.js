@@ -48,7 +48,7 @@ define(['./crypto'], function(crypto){
             + keyID;
 
         if(keyType === 'private') {
-            var aesKey = crypto.random.bytes(16).join('');
+            var aesKey = crypto.sessionKey();
             sessionStorageKeys[keyID] = aesKey;
             key = crypto.aes.encryptCBC(key, aesKey);
         }
