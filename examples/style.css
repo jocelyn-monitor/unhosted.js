@@ -1,0 +1,12 @@
+.content {
+    float: left;
+}
+
+.sidebar {
+    float: right;
+    width: 302px;
+}
+
+.clear {
+    clear: both;
+}
