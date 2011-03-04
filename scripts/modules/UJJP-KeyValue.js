@@ -43,7 +43,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
 
         var privKey = keyStorage.retrievePrivKey(this.user.keyID);
 
-        util.UJJP.sendPost(this.postURI, {
+        util.UJJP.sendPost(this.defaultPostPath, {
             protocol: protocol
             , password: user.password
             , command: cmd
@@ -65,7 +65,7 @@ function(KeyValueInterface, modules, util, keyStorage, crypto) {
             , keyHash: key
         });
 
-        util.UJJP.sendPost(this.postURI, {
+        util.UJJP.sendPost(this.defaultPostPath, {
             protocol: protocol
             , command: cmd
         }, function postDone(err, status, data){
