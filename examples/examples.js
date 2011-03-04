@@ -1,4 +1,4 @@
-require({ baseUrl: "../scripts/", waitSeconds: 2 }
+require({ baseUrl: "../scripts/" }
         , ['crypto', 'key-storage'],
 function(crypto, keyStorage){
     window.UnhostedExamples = {};
@@ -10,7 +10,7 @@ function(crypto, keyStorage){
 
     function hash(){
         var example = location.hash.slice(1);
-        require(['./' + example], function(ex){
+        require(['./examples/' + example], function(ex){
             // The example will run by itself
         });
     }
